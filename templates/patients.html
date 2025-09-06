@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Patients</h2>
+
+<form method="post" class="form">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="number" name="age" placeholder="Age">
+  <input type="text" name="contact" placeholder="Contact">
+  <input type="text" name="disease" placeholder="Disease">
+  <button type="submit">Add Patient</button>
+</form>
+
+<table>
+  <tr><th>ID</th><th>Name</th><th>Age</th><th>Contact</th><th>Disease</th><th>Actions</th></tr>
+  {% for p in patients %}
+  <tr>
+    <td>{{ p.patient_id }}</td>
+    <td>{{ p.name }}</td>
+    <td>{{ p.age }}</td>
+    <td>{{ p.contact }}</td>
+    <td>{{ p.disease }}</td>
+    <td><a href="{{ url_for('patient_appointments', patient_id=p.patient_id) }}">View Appointments</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

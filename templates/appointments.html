@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>Book Appointment</h2>
+
+<form method="post" class="form">
+  <select name="patient_id" required>
+    <option value="">-- Select Patient --</option>
+    {% for p in patients %}
+      <option value="{{ p.patient_id }}">{{ p.name }} (ID {{ p.patient_id }})</option>
+    {% endfor %}
+  </select>
+
+  <select name="doctor_id" required>
+    <option value="">-- Select Doctor --</option>
+    {% for d in doctors %}
+      <option value="{{ d.doctor_id }}">{{ d.name }} - {{ d.specialization }}</option>
+    {% endfor %}
+  </select>
+
+  <input type="date" name="date" value="{{ '' }}">
+  <button type="submit">Book</button>
+</form>
+
+<h3>Recent Appointments</h3>
+<table>
+  <tr><th>ID</th><th>Date</th><th>Status</th><th>Patient</th><th>Doctor</th><th>Spec</th></tr>
+  {% for a in appts %}
+  <tr>
+    <td>{{ a.appointment_id }}</td>
+    <td>{{ a.date }}</td>
+    <td>{{ a.status }}</td>
+    <td>{{ a.patient }}</td>
+    <td>{{ a.doctor }}</td>
+    <td>{{ a.specialization }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+

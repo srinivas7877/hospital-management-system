@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Banner only for Dashboard -->
+  <header class="banner">
+    <img src="{{ url_for('static', filename='images/hospital.jpg') }}" alt="Hospital Banner">
+    <div class="banner-text">
+      <h1>🏥 Hospital Management System</h1>
+      <p>Manage Patients, Doctors, Appointments & Billing with ease</p>
+    </div>
+  </header>
+
+  <!-- Dashboard Stats -->
+  <section class="stats">
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/patients.png') }}" alt="Patients">
+      <h3>Patients</h3>
+      <p>{{ counts.patients }}</p>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/doctors.png') }}" alt="Doctors">
+      <h3>Doctors</h3>
+      <p>{{ counts.doctors }}</p>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/appointments.png') }}" alt="Appointments">
+      <h3>Appointments</h3>
+      <p>{{ counts.appointments }}</p>
+    </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/bills.png') }}" alt="Bills">
+      <h3>Bills</h3>
+      <p>{{ counts.bills }}</p>
+    </div>
+  </section>
+{% endblock %}

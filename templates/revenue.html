@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Monthly Revenue</h2>
+<table>
+  <tr><th>Year</th><th>Month</th><th>Total</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ r.year }}</td>
+    <td>{{ r.month }}</td>
+    <td>{{ "%.2f"|format(r.total or 0) }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

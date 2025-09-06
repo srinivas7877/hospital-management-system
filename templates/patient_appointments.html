@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Appointments for Patient</h2>
+{% if patient %}
+<p><b>{{ patient.name }}</b> (ID {{ patient.patient_id }})</p>
+{% endif %}
+<table>
+  <tr><th>ID</th><th>Date</th><th>Status</th><th>Doctor</th><th>Spec</th></tr>
+  {% for a in appts %}
+  <tr>
+    <td>{{ a.appointment_id }}</td>
+    <td>{{ a.date }}</td>
+    <td>{{ a.status }}</td>
+    <td>{{ a.doctor }}</td>
+    <td>{{ a.specialization }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

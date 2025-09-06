@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Schedule for Doctor</h2>
+{% if doctor %}
+<p><b>{{ doctor.name }}</b> ({{ doctor.specialization }}) - ID {{ doctor.doctor_id }}</p>
+{% endif %}
+<table>
+  <tr><th>ID</th><th>Date</th><th>Status</th><th>Patient</th></tr>
+  {% for a in appts %}
+  <tr>
+    <td>{{ a.appointment_id }}</td>
+    <td>{{ a.date }}</td>
+    <td>{{ a.status }}</td>
+    <td>{{ a.patient }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

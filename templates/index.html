@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Management Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<body>
+  <!-- Banner Section -->
+  <header class="banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1>🏥 Hospital Management System</h1>
+      <p>Manage Patients, Doctors, Appointments & Billing with ease</p>
+      <div class="banner-buttons">
+        <a href="{{ url_for('patients') }}" class="btn primary">➕ Register Patient</a>
+        <a href="{{ url_for('appointments') }}" class="btn secondary">📅 Book Appointment</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Section -->
+
+
+
+
+  <section class="stats">
+    <div class="card patients">
+      <img src="{{ url_for('static', filename='images/patients.png') }}" alt="Patients">
+      <h3>Patients</h3>
+      <p class="count">{{ counts.patients }}</p>
+      <a href="{{ url_for('patients') }}" class="btn">View Details</a>
+    </div>
+
+    <div class="card doctors">
+      <img src="{{ url_for('static', filename='images/doctors.png') }}" alt="Doctors">
+      <h3>Doctors</h3>
+      <p class="count">{{ counts.doctors }}</p>
+      <a href="{{ url_for('doctors') }}" class="btn">View Details</a>
+    </div>
+
+    <div class="card appointments">
+      <img src="{{ url_for('static', filename='images/appointments.png') }}" alt="Appointments">
+      <h3>Appointments</h3>
+      <p class="count">{{ counts.appointments }}</p>
+      <a href="{{ url_for('appointments') }}" class="btn">View Details</a>
+    </div>
+
+    <div class="card bills">
+      <img src="{{ url_for('static', filename='images/bills.png') }}" alt="Bills">
+      <h3>Bills</h3>
+      <p class="count">{{ counts.bills }}</p>
+      <a href="{{ url_for('bills') }}" class="btn">View Details</a>
+    </div>
+  </section>
+
+
+
+
+
+ <!-- Recent Data Section -->
+<section class="recent">
+  <div>
+    <h2>Recent Patients</h2>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Age</th><th>Disease</th></tr>
+      </thead>
+      <tbody>
+        {% for p in recent_patients %}
+        <tr>
+          <td>{{ p.patient_id }}</td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.age }}</td>
+          <td>{{ p.disease }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{ url_for('patients') }}" class="view-all">View All →</a>
+  </div>
+
+  <div>
+    <h2>Recent Doctors</h2>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Specialization</th></tr>
+      </thead>
+      <tbody>
+        {% for d in recent_doctors %}
+        <tr>
+          <td>{{ d.doctor_id }}</td>
+          <td>{{ d.name }}</td>
+          <td>{{ d.specialization }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{ url_for('doctors') }}" class="view-all">View All →</a>
+  </div>
+</section>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Generate Bill</h2>
+<form method="post" class="form">
+  <select name="patient_id" required>
+    <option value="">-- Select Patient --</option>
+    {% for p in patients %}
+      <option value="{{ p.patient_id }}">{{ p.name }} (ID {{ p.patient_id }})</option>
+    {% endfor %}
+  </select>
+  <input type="number" step="0.01" name="amount" placeholder="Amount" required>
+  <input type="date" name="date">
+  <button type="submit">Create Bill</button>
+</form>
+
+<h3>Recent Bills</h3>
+<table>
+  <tr><th>ID</th><th>Date</th><th>Patient</th><th>Amount</th></tr>
+  {% for b in bills %}
+  <tr>
+    <td>{{ b.bill_id }}</td>
+    <td>{{ b.date }}</td>
+    <td>{{ b.patient }}</td>
+    <td>{{ b.amount }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+
+
